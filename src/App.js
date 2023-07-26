@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./Header";
+import CareerObjective from "./CareerObjective";
+import SkillColumn from "./SkillColumn";
+import Menu from "./Menu";
+import Education from "./Education";
+import WorkExperience from "./WorkExperience";
+import Projects from "./Projects";
+import Contact from "./Contact";
+import "./App.css";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <CareerObjective />
+        <div className="skills">
+          <SkillColumn
+            title="Frontend"
+            color="blue"
+            skills={["Javascript", "HTML", "CSS", "React.js"]}
+          />
+          <SkillColumn
+            title="Backend"
+            color="red"
+            skills={["Node.js", "Python"]}
+          />
+          <SkillColumn
+            title="Databases"
+            color="green"
+            skills={["MySQL", "Postgres"]}
+          />
+          <SkillColumn
+            title="Version Control"
+            color="yellow"
+            skills={["git"]}
+          />
+          <SkillColumn
+            title="Project MGMT tools"
+            color="grey"
+            skills={["Agile", "Scrum"]}
+          />
+        </div>
+        <Menu />
+        <Routes>
+          <Route path="/education" element={<Education />} />
+          <Route path="/work-experience" element={<WorkExperience />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
